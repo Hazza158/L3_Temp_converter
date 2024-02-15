@@ -5,6 +5,11 @@ class Converter:
 
    def __init__(self):
 
+       # common format for all buttons
+       # Arial size 14 bold, with white text
+       button_font = ("Arial", "14", "bold")
+       button_fg = "#FFFFFF"
+
        # set up GUI frame
        self.temp_frame = Frame(padx=10, pady=10)
        self.temp_frame.grid()
@@ -38,15 +43,20 @@ class Converter:
        self.button_frame = Frame(self.temp_frame)
        self.button_frame.grid(row=4)
 
-       self.to_celsius_button = Button(self.button_frame, text="To Celcius"
-                                                               , bg="#990099",
-                                       fg="#FFFFFF")
+       self.to_celsius_button = Button(self.button_frame,
+                                       text="To Celcius",
+                                       bg="#990099",
+                                       fg=button_fg,
+                                       font=button_font)
        self.to_celsius_button.grid(row=0, column=0)
 
        self.to_farenheit_button = Button(self.button_frame,
                                          text="To Farenheit",
                                          bg="#009900",
+                                         fg=button_fg,
+                                         font=button_font
                                          )
+       self.to_farenheit_button.grid(row=0, column=1)
 
 
 # main routine

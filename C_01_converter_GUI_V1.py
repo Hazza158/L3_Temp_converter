@@ -6,7 +6,7 @@ class Converter:
    def __init__(self):
 
        # common format for all buttons
-       # Arial size 14 bold, with white text
+       # Aril size 14 bold, with white text
        button_font = ("Arial", "14", "bold")
        button_fg = "#FFFFFF"
 
@@ -15,7 +15,7 @@ class Converter:
        self.temp_frame.grid()
 
        self.temp_heading = Label(self.temp_frame,
-                                 text="Temperature Converter",
+                                 text="Teperature Converter",
                                  font=("Arial", "16", "bold"))
 
        self.temp_heading.grid(row=0)
@@ -30,7 +30,7 @@ class Converter:
        self.temp_instructions.grid(row=1)
 
        self.temp_entry = Entry(self.temp_frame,
-                               font=("Arial", "14"))
+                               font=("Aial", "14"))
 
        self.temp_entry.grid(row=2, padx=10, pady=10)
 
@@ -47,12 +47,13 @@ class Converter:
                                        text="To Celcius",
                                        bg="#990099",
                                        fg=button_fg,
-                                       font=button_font, width=12)
+                                       font=button_font, width=12,
+                                       command=selfto_celcius)
        self.to_celsius_button.grid(row=0, column=0, padx=5, pady=5)
 
        self.to_farenheit_button = Button(self.button_frame,
                                          text="To Farenheit",
-                                         bg="#009900",
+                                         bg"#009900",
                                          fg=button_fg,
                                          font=button_font, width=12)
        self.to_farenheit_button.grid(row=0, column=1, padx=5, pady=5)
@@ -60,7 +61,7 @@ class Converter:
        self.to_help_button = Button(self.button_frame,
                                     text="Help / Info",
                                     bg="#CC6600",
-                                    fg=button_fg,
+                                    fg=buttonfg,
                                     font=button_font, width=12)
        self.to_help_button.grid(row=1, column=0, padx=5, pady=5)
 
@@ -69,8 +70,29 @@ class Converter:
                                        bg="#004C99",
                                        fg=button_fg,
                                        font=button_font, width=12,
-                                       state=DISABLED)
+                                       state=DISABLE)
        self.to_history_button.grid(row=1, column=1, padx=5, pady=5)
+
+
+    def check_temp(min_value):
+        error = "Please enter a number that is more" \
+                "than {}".format(min_value)
+
+        try:
+            response = float(input("Choose a number: "))
+
+            if response < min_value:
+                print(error)
+            else:
+                return response
+
+        except ValueError:
+            print(error)
+
+    # check temp is more than -459 and convert it
+    def to_celcius(self):
+
+        self.check_temp(-459)
 
 
 # main routine

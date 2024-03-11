@@ -33,19 +33,20 @@ class Converter:
                                         fg=button_fg,
                                         font=button_font, width=12,
                                         state=DISABLED,
-                                        command=self.to_history)
+                                        command=lambda: self.to_history)
         self.to_history_button.grid(row=1, column=1, padx=5, pady=5)
 
         # **** Remove when integrating!! ***
         self.to_history_button.config(state=NORMAL)
 
-    def to_history(self):
-        HistoryExport(self)
+    def to_history(self, all_calculations):
+        HistoryExport(self, all_calculations)
 
 
 class HistoryExport:
 
-    def __init__(self, partner):
+    def __init__(self, partner, calc_list):
+
         # setup dialogue box and background colour
         self.history_box = Toplevel()
 
